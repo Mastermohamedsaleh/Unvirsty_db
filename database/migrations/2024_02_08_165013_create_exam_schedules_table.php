@@ -20,6 +20,7 @@ return new class extends Migration
             $table->time('end_time');
             $table->string('year');
             $table->string('semester');
+            $table->string('location');
             $table->foreignId('college_id')->references('id')->on('colleges')->onDelete('cascade');
             $table->foreignId('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
             $table->foreignId('section_id')->nullable()->references('id')->on('sections')->onDelete('cascade');

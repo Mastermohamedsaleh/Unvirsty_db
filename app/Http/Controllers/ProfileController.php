@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Session;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
+
 use File;
 
 class ProfileController extends Controller
@@ -53,5 +57,50 @@ class ProfileController extends Controller
     }
 
     }
+
+
+
+    // Edit On Pass 
+    public function updatePassword(Request $request) 
+    {
+        if(auth('admin')->check()){
+          $guard = 'admin';   
+          $Model=  '\App\Models\Admin' ;   
+        }elseif(auth('student')->check()){
+            $guard = 'student';
+            $Model = '\App\Models\Student';  
+        }elseif(auth('doctor')->check()){
+            $guard = 'doctor'; 
+            $Model = '\App\Models\Doctor';  
+        }else{
+            $guard = 'accountant'; 
+            $Model = '\App\Models\Accountant';
+        }
+
+                # Validation
+                $request->validate([
+                    'old_password' => 'required',
+                    'new_password' => 'required|confirmed',
+                ]);
+
+                if(!Hash::check($request->old_password, Auth::guard($guard)->user()->password)){
+                    return back()->with("message", "Old Password Doesn't match!");
+                }
+ 
+                
+        #Update the new Password
+        $Model::whereId(Auth::guard($guard)->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        // return   $Model::where('id' ,Auth::guard($guard)->user()->id)->get();
+
+        return back()->with("message", "Password changed successfully!");
+
+
+    }
+
+
+
      
 }

@@ -48,7 +48,7 @@ class StudyScheduleController extends Controller
             for($i =0 ; $i < count($course_id) ; $i++){
               $insert = [
                   'course_id'=>$course_id[$i],
-                  'course_date' =>$course_day[$i],
+                  'course_day' =>$course_day[$i],
                   'start_time' =>$start_time[$i],
                   'end_time' =>$end_time[$i],
                   'doctor_id' =>$doctor_id[$i],

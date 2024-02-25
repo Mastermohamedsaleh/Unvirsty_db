@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('study_schedules', function (Blueprint $table) {
             $table->id();
-            $table->date('course_date');
+            $table->string('course_day');
             $table->time('start_time');
             $table->time('end_time');
             $table->string('year');
             $table->string('semester');
+            $table->string('location');
             $table->foreignId('college_id')->references('id')->on('colleges')->onDelete('cascade');
             $table->foreignId('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
             $table->foreignId('section_id')->nullable()->references('id')->on('sections')->onDelete('cascade');

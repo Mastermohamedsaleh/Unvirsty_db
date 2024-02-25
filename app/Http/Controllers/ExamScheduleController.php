@@ -50,9 +50,12 @@ class ExamScheduleController extends Controller
             'exam_date' =>$exam_date[$i],
             'start_time' =>$start_time[$i],
             'end_time' =>$end_time[$i],
+            'location'=>$request->location[$i],
             'college_id'=>$college_id,
             'classroom_id'=>$classroom_id,
             'section_id'=>$section_id,
+            'semester'=>$request->semester,
+            'year'=>$request->year
          
         ];
        DB::table('exam_schedules')->insert($insert); 

@@ -88,6 +88,9 @@
                   <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
                   <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
                 </div> -->
+
+                <a href="#"  type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#cheangePass{{auth()->user()->id}}">Change Password</a>
+
               </div>
             </div>
           </div>
@@ -155,6 +158,72 @@
 
 
 
+
+
+<!-- Change pass -->
+<div class="modal fade" id="cheangePass{{auth()->user()->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+              
+
+    <form action="{{ route('update-password') }}" method="POST">
+                        @csrf
+
+
+                        <div class="row">
+
+
+
+                        <div class="col-12">
+
+                        <label for="oldPasswordInput" class="form-label">Old Password</label>
+                                <input name="old_password" type="password" class="form-control @error('old_password') is-invalid @enderror" id="oldPasswordInput"
+                                    placeholder="Old Password">
+                                @error('old_password')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                        </div>
+
+                        <div class="col-12">
+                        <label for="newPasswordInput" class="form-label">New Password</label>
+                                <input name="new_password" type="password" class="form-control @error('new_password') is-invalid @enderror" id="newPasswordInput"
+                                    placeholder="New Password">
+                                @error('new_password')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                        </div>
+
+
+                        <div class="col-12">
+
+                        <label for="confirmNewPasswordInput" class="form-label">Confirm New Password</label>
+                                <input name="new_password_confirmation" type="password" class="form-control" id="confirmNewPasswordInput"
+                                    placeholder="Confirm New Password">
+
+                        </div>
+
+
+
+                  
+
+
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary button-mode" data-bs-dismiss="modal">Close</button>
+        <button  class="btn btn-primary button-mode">udpate</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

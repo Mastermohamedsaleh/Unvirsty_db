@@ -285,6 +285,24 @@ $(document).ready(function(){
 
     </div>
 
+
+
+
+    
+    <div class="col">
+    <label>Location: <span class="text-danger">*</span> </label>
+    <select name="location" >
+  <option value="A1">A1</option>
+  <option value="A2">A2</option>
+  <option value="B1">B1</option>
+  <option value="B2">B2</option>
+  <option value="C1">C1</option>
+  <option value="C2">C2</option>
+  <option value="D1">D1</option>
+  <option value="D2">D2</option>
+</select>
+    </div>
+
     <div class="col">
      <a hreg="javascript:void(0)" class="btn btn-danger deleteRow" >-</a>
     </div>

@@ -263,6 +263,10 @@ $(document).ready(function(){
       <input type="time" name="end_time[]" >
     </div>
 
+
+
+
+
     <div class="col">
      <a hreg="javascript:void(0)" class="btn btn-danger deleteRow" >-</a>
     </div>
